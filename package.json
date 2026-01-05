@@ -1,6 +1,6 @@
 {
   "name": "@edziocodes/niivue-mcp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MCP server for Niivue neuroimaging documentation",
   "bin": {
     "niivue-mcp": "./dist/index.js"
