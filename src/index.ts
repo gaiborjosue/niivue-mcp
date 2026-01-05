@@ -15,23 +15,8 @@ import {
 } from "./tools.js";
 
 const args = process.argv.slice(2);
-const forceEmbeddings = args.includes("--use-embeddings");
 const disableEmbeddings = args.includes("--no-embeddings");
-let useEmbeddings = !disableEmbeddings;
-
-if (useEmbeddings) {
-  try {
-    await import("@xenova/transformers");
-  } catch (error) {
-    if (forceEmbeddings) {
-      console.error("Embeddings requested but @xenova/transformers not installed.");
-      console.error("Run: npm install @xenova/transformers");
-      process.exit(1);
-    }
-    console.warn("Embeddings not available; falling back to BM25 only.");
-    useEmbeddings = false;
-  }
-}
+const useEmbeddings = !disableEmbeddings;
 
 initializeSearch({ useEmbeddings });
 

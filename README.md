@@ -1,4 +1,6 @@
-# niivue-mcp
+# @edziocodes/niivue-mcp
+
+[![npm version](https://img.shields.io/npm/v/@edziocodes/niivue-mcp.svg)](https://www.npmjs.com/package/@edziocodes/niivue-mcp)
 
 MCP server that provides Niivue documentation and API reference to LLMs with fast lexical search and optional semantic hybrid search.
 
@@ -8,41 +10,52 @@ MCP server that provides Niivue documentation and API reference to LLMs with fas
 - Structured tools for overview, search, listing, and page retrieval.
 - Local cache to keep startup and query latency low.
 
-## Install
+## Installation
+
 ```bash
-npm install
-npm run build
+npm install @edziocodes/niivue-mcp
 ```
 
-## Run locally
-```bash
-npm run dev
-```
+## MCP Client Configuration
 
-## MCP client config
+Add the following to your MCP client configuration (e.g., Claude Desktop, Cursor, etc.):
+
 ```json
 {
   "mcpServers": {
     "niivue": {
       "command": "npx",
-      "args": ["-y", "niivue-mcp"]
+      "args": ["-y", "@edziocodes/niivue-mcp"]
     }
   }
 }
 ```
 
-## Embeddings (hybrid search)
-Hybrid search is enabled by default when embeddings are available. The model is downloaded on first use.
+## Development
 
-Install the optional dependency:
+Clone and build from source:
+
 ```bash
-npm install @xenova/transformers
+git clone https://github.com/gaiborjosue/niivue-mcp.git
+cd niivue-mcp
+npm install
+npm run build
 ```
 
-Force embeddings on or off:
+Run locally:
+
 ```bash
-npx niivue-mcp --use-embeddings
-npx niivue-mcp --no-embeddings
+npm run dev
+```
+
+## Embeddings (hybrid search)
+
+Hybrid search with semantic embeddings is enabled by default. The embedding model is downloaded on first use.
+
+To disable embeddings and use BM25 search only:
+
+```bash
+npx @edziocodes/niivue-mcp --no-embeddings
 ```
 
 ## Tools
